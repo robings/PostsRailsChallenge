@@ -1,8 +1,8 @@
 <?php
 
 //hardcoded User input
-$posts = 0;
-$railings = 5;
+$posts = 5;
+$railings = 0;
 $length = 0;
 
 
@@ -84,6 +84,10 @@ function lengthCalculator ($type, $posts, $railings, $postLength, $railingLength
     } elseif ($type === 'railingsOnly') {
         $returnString = 'Posts: ' . ($railings + 1) . '<br />';
         $returnString .= 'Length: ' . (($railings * $railingLength) + (($railings + 1) * $postLength));
+        return $returnString;
+    } elseif ($type === 'postsOnly') {
+        $returnString = 'Railings: ' . ($posts - 1) . '<br />';
+        $returnString .= 'Length: ' . (($posts - 1) * $railingLength + ($posts * $postLength));
         return $returnString;
     }
 }
