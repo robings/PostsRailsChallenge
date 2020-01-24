@@ -41,10 +41,6 @@ function calcPostsAndRailings(int $posts, int $railings, int $length) {
         return;
     }
 
-    if ($posts = $railings) {
-        $railings -= 1;
-    }
-
      if (whatToCalculate($posts, $railings, $length) === 'lengthOnly') {
          $result =  postRailingsCalculator($length, POSTLENGTH, RAILINGLENGTH);
      } else {
@@ -79,7 +75,11 @@ function whatToCalculate(int $posts, int $railings, int $length): string {
 //function to calculate length (and posts or railings as necessary)
 function lengthCalculator ($type, $posts, $railings, $postLength, $railingLength) {
     //echo 'Calculating Length...';
+    echo $type;
     if ($type === 'postsRailings') {
+        if ($railings === $posts) {
+            $railings -= 1;
+            }
         return 'Length: ' . (($railings * $railingLength) + ($posts * $postLength));
     } elseif ($type === 'railingsOnly') {
         $returnString = 'Posts: ' . ($railings + 1) . '<br />';
