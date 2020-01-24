@@ -1,7 +1,7 @@
 <?php
 
 //hardcoded User input
-$posts = 5;
+$posts = 0;
 $railings = 5;
 $length = 0;
 
@@ -78,12 +78,13 @@ function whatToCalculate(int $posts, int $railings, int $length): string {
 
 //function to calculate length (and posts or railings as necessary)
 function lengthCalculator ($type, $posts, $railings, $postLength, $railingLength) {
-    echo 'Calculating Length...';
-    if ($type = 'postsRailings') {
+    //echo 'Calculating Length...';
+    if ($type === 'postsRailings') {
         return 'Length: ' . (($railings * $railingLength) + ($posts * $postLength));
-    } elseif ($type = 'railingsOnly') {
+    } elseif ($type === 'railingsOnly') {
         $returnString = 'Posts: ' . ($railings + 1) . '<br />';
         $returnString .= 'Length: ' . (($railings * $railingLength) + (($railings + 1) * $postLength));
+        return $returnString;
     }
 }
 
