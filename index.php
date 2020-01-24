@@ -80,7 +80,10 @@ function whatToCalculate(int $posts, int $railings, int $length): string {
 function lengthCalculator ($type, $posts, $railings, $postLength, $railingLength) {
     echo 'Calculating Length...';
     if ($type = 'postsRailings') {
-        return ($railings * $railingLength) + ($posts * $postLength);
+        return 'Length: ' . (($railings * $railingLength) + ($posts * $postLength));
+    } elseif ($type = 'railingsOnly') {
+        $returnString = 'Posts: ' . ($railings + 1) . '<br />';
+        $returnString .= 'Length: ' . (($railings * $railingLength) + (($railings + 1) * $postLength));
     }
 }
 
