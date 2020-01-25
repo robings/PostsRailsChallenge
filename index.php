@@ -94,7 +94,7 @@ function lengthCalculator ($type, $posts, $railings, $postLength, $railingLength
 
 //function to calculate post and railings from length
 function postRailingsCalculator ($length, $postLength, $railingLength) {
-    echo 'Calculating Posts and Railings';
+    //echo 'Calculating Posts and Railings';
     $buildLength = $postLength;
     $noOfPosts = 1;
     $noOfRailings = 0;
@@ -106,7 +106,11 @@ function postRailingsCalculator ($length, $postLength, $railingLength) {
     if ($noOfPosts != $noOfRailings+1) {
         return 'oops, something went wrong: postRailingsCalculator function';
     } else {
-        return 'Posts:' . $noOfPosts . '<br />' . 'Railings' . $noOfRailings;
+        $toReturn = 'Input Length: ' . $length . '<br />';
+        $toReturn .= 'Posts: ' . $noOfPosts . '<br />' . 'Railings: ' . $noOfRailings . '<br />';
+        $toReturn .= 'Total Length of resulting fence: '  . $buildLength . '<br />';
+        $toReturn .= 'Difference from input length: ' . ($buildLength - $length);
+        return $toReturn;
     }
 }
 
