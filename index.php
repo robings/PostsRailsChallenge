@@ -3,7 +3,7 @@
 //hardcoded User input
 $posts = 0;
 $railings = 0;
-$length = 2;
+$length = 1.7;
 
 
 //constants for post and railing lengths
@@ -17,7 +17,7 @@ define('RAILINGLENGTH', 1.5);
  * @param int $length - the length of the fence
  * @return string|null - return an error message or nothing.
  */
-function checkInput(int $posts, int $railings, int $length) {
+function checkInput($posts, $railings, $length) {
     if ($posts === 0 && $railings === 0 && $length === 0) {
         return 'Check input<br />All values cannot be 0';
     } elseif ($posts > 0 && $railings > 0 && $length > 0) {
@@ -35,7 +35,7 @@ function checkInput(int $posts, int $railings, int $length) {
 calcPostsAndRailings($posts, $railings, $length);
 
 //calc posts and railings function to call the results of which go onto the screen
-function calcPostsAndRailings(int $posts, int $railings, int $length) {
+function calcPostsAndRailings($posts, $railings, $length) {
     if (checkInput($posts, $railings, $length)) {
         echo checkInput($posts, $railings, $length);
         return;
@@ -57,7 +57,7 @@ function calcPostsAndRailings(int $posts, int $railings, int $length) {
  * @param int $length - length
  * @return string to represent the type of calculation to perform
  */
-function whatToCalculate(int $posts, int $railings, int $length): string {
+function whatToCalculate($posts, $railings, $length): string {
     if ($posts > 0 && $railings > 0 && $length === 0) {
         return 'postsRailings'; //length from posts and railings
     } elseif ($posts === 0 && $railings > 0 && $length === 0) {
@@ -74,19 +74,21 @@ function whatToCalculate(int $posts, int $railings, int $length): string {
 
 //function to calculate length (and posts or railings as necessary)
 function lengthCalculator ($type, $posts, $railings, $postLength, $railingLength) {
-    //echo 'Calculating Length...';
-    echo $type;
+    $returnString = '';
     if ($type === 'postsRailings') {
         if ($railings === $posts) {
             $railings -= 1;
+            $returnString = 'Railings reduced by one as number of posts must be 1 more than number of railings <br />';
             }
-        return 'Length: ' . (($railings * $railingLength) + ($posts * $postLength));
+        $returnString .= 'Posts inputted: ' . $posts . '<br />Railings inputted: ' . $railings . '<br />';
+        $returnString .= 'Length: ' . (($railings * $railingLength) + ($posts * $postLength));
+        return $returnString;
     } elseif ($type === 'railingsOnly') {
-        $returnString = 'Posts: ' . ($railings + 1) . '<br />';
+        $returnString = 'No of railngs inputted: ' . $railings . '<br />Posts: ' . ($railings + 1) . '<br />';
         $returnString .= 'Length: ' . (($railings * $railingLength) + (($railings + 1) * $postLength));
         return $returnString;
     } elseif ($type === 'postsOnly') {
-        $returnString = 'Railings: ' . ($posts - 1) . '<br />';
+        $returnString = 'No of posts inputted: ' . $posts . '<br />Railings: ' . ($posts - 1) . '<br />';
         $returnString .= 'Length: ' . (($posts - 1) * $railingLength + ($posts * $postLength));
         return $returnString;
     }
@@ -94,7 +96,6 @@ function lengthCalculator ($type, $posts, $railings, $postLength, $railingLength
 
 //function to calculate post and railings from length
 function postRailingsCalculator ($length, $postLength, $railingLength) {
-    //echo 'Calculating Posts and Railings';
     $buildLength = $postLength;
     $noOfPosts = 1;
     $noOfRailings = 0;
@@ -106,10 +107,11 @@ function postRailingsCalculator ($length, $postLength, $railingLength) {
     if ($noOfPosts != $noOfRailings+1) {
         return 'oops, something went wrong: postRailingsCalculator function';
     } else {
-        $toReturn = 'Input Length: ' . $length . '<br />';
+        $toReturn = 'Length inputted: ' . $length . '<br />';
         $toReturn .= 'Posts: ' . $noOfPosts . '<br />' . 'Railings: ' . $noOfRailings . '<br />';
         $toReturn .= 'Total Length of resulting fence: '  . $buildLength . '<br />';
-        $toReturn .= 'Difference from input length: ' . ($buildLength - $length);
+        $lengthDiff = $buildLength - $length;
+        $toReturn .= 'Difference from input length: ' . $lengthDiff;
         return $toReturn;
     }
 }
