@@ -2,8 +2,8 @@
 
 //hardcoded User input
 $posts = 0;
-$railings = 0;
-$length = 1.7;
+$railings = 3;
+$length = 0;
 
 
 //constants for post and railing lengths
@@ -111,7 +111,9 @@ function postRailingsCalculator ($length, $postLength, $railingLength) {
         $toReturn .= 'Posts: ' . $noOfPosts . '<br />' . 'Railings: ' . $noOfRailings . '<br />';
         $toReturn .= 'Total Length of resulting fence: '  . $buildLength . '<br />';
         $lengthDiff = $buildLength - $length;
-        $toReturn .= 'Difference from input length: ' . $lengthDiff;
+        //echo $buildLength;
+        //echo $length;
+        //$toReturn .= 'Difference from input length: ' . $lengthDiff;
         return $toReturn;
     }
 }
