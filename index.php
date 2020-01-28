@@ -3,9 +3,9 @@
 require_once ('functions.php');
 
 //hardcoded User input
-$posts = 0;
-$railings = 0;
-$length = 3.3;
+$posts = 3;
+$railings = 3;
+$length = 0;
 
 
 //constants for post and railing lengths
