@@ -106,7 +106,5 @@ function postRailingsCalculator ($length, $postLength, $railingLength) {
 //function to clear post
 function clearUp()
 {
-    unset($_POST['posts']);
-    unset($_POST['railings']);
-    unset($_POST['length']);
+    unset($_POST);
 }
