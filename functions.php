@@ -32,7 +32,7 @@ function calcPostsAndRailings($posts, $railings, $length) {
         $result = lengthCalculator(whatToCalculate($posts, $railings, $length), $posts, $railings, POSTLENGTH, RAILINGLENGTH);
     }
 
-    echo $result;
+    return $result;
 }
 
 /**
@@ -103,4 +103,10 @@ function postRailingsCalculator ($length, $postLength, $railingLength) {
     }
 }
 
-//output function to build minimal HTML to display/update form display
+//function to clear post
+function clearUp()
+{
+    unset($_POST['posts']);
+    unset($_POST['railings']);
+    unset($_POST['length']);
+}

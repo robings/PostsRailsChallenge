@@ -29,12 +29,14 @@ if (isset($_POST['posts'])) {
 
 //run main function
     //echo $posts;
-    calcPostsAndRailings($posts, $railings, $length);
+   $result = calcPostsAndRailings($posts, $railings, $length);
 
 } else {
     //echo 'There is no get';
 }
 
+// clear up
+clearUp();
 
 
 ?>
@@ -47,5 +49,7 @@ if (isset($_POST['posts'])) {
     <label>Length: </label><input type='text' name='length' /><br /><br />
     <input type='submit' />
 </form>
-
+<?php
+ echo $result;
+?>
 </html>
