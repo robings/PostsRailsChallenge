@@ -14,7 +14,10 @@ function checkInput($posts, $railings, $length) {
         return 'Check input<br />You cannot input values for posts, railings and length all at the same time';
     } elseif (($length > 0 && $posts > 0 && $railings === 0) || ($length > 0 && $posts === 0 && $railings > 0)) {
         return 'Check input<br />Length must be the only value or it must be 0/empty.';
-    } else {
+    } elseif ($posts === 1) {
+        return 'There must be at least 2 posts for a fence';
+    } else
+    {
         return NULL;
     }
 }
