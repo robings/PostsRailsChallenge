@@ -9,11 +9,11 @@
  */
 function checkInput($posts, $railings, $length) {
     if ($posts === 0 && $railings === 0 && $length === 0) {
-        return 'Check input<br />All values cannot be 0';
+        return 'Check input<br />All values cannot be 0 or empty';
     } elseif ($posts > 0 && $railings > 0 && $length > 0) {
         return 'Check input<br />You cannot input values for posts, railings and length all at the same time';
     } elseif (($length > 0 && $posts > 0 && $railings === 0) || ($length > 0 && $posts === 0 && $railings > 0)) {
-        return 'Check input<br />Length must be the only value or it must be 0.';
+        return 'Check input<br />Length must be the only value or it must be 0/empty.';
     } else {
         return NULL;
     }

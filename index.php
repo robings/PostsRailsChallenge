@@ -2,32 +2,49 @@
 
 require_once ('functions.php');
 
-//hardcoded User input
-$posts = 3;
-$railings = 3;
-$length = 0;
+//is there user input?
+if (isset($_POST['posts'])) {
+    //echo 'There is a get';
+
+    $posts = $_POST['posts'];
+    if ($posts == '') {
+        $posts = 0;
+    }
+
+    $railings = $_POST['railings'];
+    if ($railings =='') {
+        $railings = 0;
+    }
+
+    $length = $_POST['length'];
+    if ($length == '') {
+        $length = 0;
+    }
 
 
 //constants for post and railing lengths
-define('POSTLENGTH', 0.1);
-define('RAILINGLENGTH', 1.5);
-
-
-
+    define('POSTLENGTH', 0.1);
+    define('RAILINGLENGTH', 1.5);
 
 
 //run main function
-calcPostsAndRailings($posts, $railings, $length);
+    //echo $posts;
+    calcPostsAndRailings($posts, $railings, $length);
+
+} else {
+    //echo 'There is no get';
+}
+
 
 
 ?>
 
 <html>
 
-<form action='index.php' method='get'>
-    <label>Posts: </label><input type='number' name='posts' /><br /><br />
-    <label>Railings: </label><input type='number' name='railings' /><br /><br />
-    <label>Length: </label><input type='number' name='length' /><br /><br />
+<form action='index.php' method='post'>
+    <label>Posts: </label><input type='text' name='posts' /><br /><br />
+    <label>Railings: </label><input type='text' name='railings' /><br /><br />
+    <label>Length: </label><input type='text' name='length' /><br /><br />
     <input type='submit' />
 </form>
 
