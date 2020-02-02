@@ -10,14 +10,13 @@
 function checkInput($posts, $railings, $length) {
     if ($posts === 0 && $railings === 0 && $length === 0) {
         return 'Check input<br />All values cannot be 0 or empty';
+    } elseif ($posts == 1) {
+        return 'There must be at least 2 posts for a fence';
     } elseif ($posts > 0 && $railings > 0 && $length > 0) {
         return 'Check input<br />You cannot input values for posts, railings and length all at the same time';
     } elseif (($length > 0 && $posts > 0 && $railings === 0) || ($length > 0 && $posts === 0 && $railings > 0)) {
         return 'Check input<br />Length must be the only value or it must be 0/empty.';
-    } elseif ($posts === 1) {
-        return 'There must be at least 2 posts for a fence';
-    } else
-    {
+    } else {
         return NULL;
     }
 }
@@ -69,15 +68,15 @@ function lengthCalculator ($type, $posts, $railings, $postLength, $railingLength
             $returnString = 'Railings reduced by one as number of posts must be 1 more than number of railings <br />';
         }
         $returnString .= 'Posts inputted: ' . $posts . '<br />Railings inputted: ' . $railings . '<br />';
-        $returnString .= 'Length: ' . (($railings * $railingLength) + ($posts * $postLength));
+        $returnString .= 'Length: ' . (($railings * $railingLength) + ($posts * $postLength))  . 'm<br />';
         return $returnString;
     } elseif ($type === 'railingsOnly') {
         $returnString = 'No of railngs inputted: ' . $railings . '<br />Posts: ' . ($railings + 1) . '<br />';
-        $returnString .= 'Length: ' . (($railings * $railingLength) + (($railings + 1) * $postLength));
+        $returnString .= 'Length: ' . (($railings * $railingLength) + (($railings + 1) * $postLength))  . 'm<br />';
         return $returnString;
     } elseif ($type === 'postsOnly') {
         $returnString = 'No of posts inputted: ' . $posts . '<br />Railings: ' . ($posts - 1) . '<br />';
-        $returnString .= 'Length: ' . (($posts - 1) * $railingLength + ($posts * $postLength));
+        $returnString .= 'Length: ' . (($posts - 1) * $railingLength + ($posts * $postLength)) . 'm<br />';
         return $returnString;
     }
 }
@@ -95,13 +94,13 @@ function postRailingsCalculator ($length, $postLength, $railingLength) {
     if ($noOfPosts != $noOfRailings+1) {
         return 'oops, something went wrong: postRailingsCalculator function';
     } else {
-        $toReturn = 'Length inputted: ' . $length . '<br />';
+        $toReturn = 'Length inputted: ' . $length . 'm<br />';
         $toReturn .= 'Posts: ' . $noOfPosts . '<br />' . 'Railings: ' . $noOfRailings . '<br />';
-        $toReturn .= 'Total Length of resulting fence: '  . $buildLength . '<br />';
+        $toReturn .= 'Total Length of resulting fence: '  . $buildLength . 'm<br />';
         $lengthDiff = $buildLength - $length;
         //echo gettype($buildLength);
         //echo gettype($length);
-        $toReturn .= 'Difference from input length: ' . $lengthDiff;
+        //$toReturn .= 'Difference from input length: ' . $lengthDiff;
         return $toReturn;
     }
 }

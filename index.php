@@ -30,7 +30,7 @@ if (isset($_POST['posts'])) {
 //run main function
     //echo $posts;
     if (checkInput($posts, $railings, $length)) {
-        echo checkInput($posts, $railings, $length);
+        $result = checkInput($posts, $railings, $length);
     } elseif (whatToCalculate($posts, $railings, $length) === 'lengthOnly') {
         $result =  postRailingsCalculator($length, POSTLENGTH, RAILINGLENGTH);
     } else {
@@ -60,4 +60,6 @@ clearUp();
 <?php
  echo $result;
 ?>
+
+<a href='index.php'>Reset it</a>
 </html>
