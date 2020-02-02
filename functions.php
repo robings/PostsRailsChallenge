@@ -8,13 +8,13 @@
  * @return string|null - a string with an error message, or a NULL
  */
 function checkInput($posts, $railings, $length) {
-    if ($posts === 0 && $railings === 0 && $length === 0) {
+    if ($posts == 0 && $railings == 0 && $length == 0) {
         return 'Check input<br />All values cannot be 0 or empty.<br />';
     } elseif ($posts == 1) {
         return 'There must be at least 2 posts for a fence.<br />';
     } elseif ($posts > 0 && $railings > 0 && $length > 0) {
         return 'Check input<br />You cannot input values for posts, railings and length all at the same time.br />';
-    } elseif (($length > 0 && $posts > 0 && $railings === 0) || ($length > 0 && $posts === 0 && $railings > 0)) {
+    } elseif (($length > 0 && $posts > 0 && $railings == 0) || ($length > 0 && $posts == 0 && $railings > 0)) {
         return 'Check input<br />Length must be the only value or it must be 0/empty.<br />';
     } else {
         return NULL;
@@ -29,13 +29,13 @@ function checkInput($posts, $railings, $length) {
  * @return string to represent the type of calculation to perform
  */
 function whatToCalculate($posts,  $railings, $length): string {
-    if ($posts > 0 && $railings > 0 && $length === 0) {
+    if ($posts > 0 && $railings > 0 && $length == 0) {
         return 'postsRailings'; //length from posts and railings
-    } elseif ($posts === 0 && $railings > 0 && $length === 0) {
+    } elseif ($posts == 0 && $railings > 0 && $length == 0) {
         return 'railingsOnly'; //length and posts from railings
-    } elseif ($posts > 0 && $railings === 0 && $length === 0) {
+    } elseif ($posts > 0 && $railings == 0 && $length == 0) {
         return 'postsOnly'; //length and railings from posts
-    }  elseif ($posts === 0 && $railings === 0 && $length > 0) {
+    }  elseif ($posts == 0 && $railings == 0 && $length > 0) {
         return 'lengthOnly'; //posts and railings from lengths
     } else {
         return 'oops this shouldn\'t have happened: function whatToCalculate';
