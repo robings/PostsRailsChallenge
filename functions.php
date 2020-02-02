@@ -1,50 +1,34 @@
 <?php
 
 /**
- * preprocesses user input
- * @param int $posts - the number of posts
- * @param int $railings - the number of railings
- * @param int $length - the length of the fence
- * @return string|null - return an error message or nothing.
+ * checks input for problems
+ * @param $posts - value from posts input on form
+ * @param $railings - value from railings input from form
+ * @param $length - value from length input from form
+ * @return string|null - a string with an error message, or a NULL
  */
 function checkInput($posts, $railings, $length) {
     if ($posts === 0 && $railings === 0 && $length === 0) {
-        return 'Check input<br />All values cannot be 0 or empty';
+        return 'Check input<br />All values cannot be 0 or empty.<br />';
     } elseif ($posts == 1) {
-        return 'There must be at least 2 posts for a fence';
+        return 'There must be at least 2 posts for a fence.<br />';
     } elseif ($posts > 0 && $railings > 0 && $length > 0) {
-        return 'Check input<br />You cannot input values for posts, railings and length all at the same time';
+        return 'Check input<br />You cannot input values for posts, railings and length all at the same time.br />';
     } elseif (($length > 0 && $posts > 0 && $railings === 0) || ($length > 0 && $posts === 0 && $railings > 0)) {
-        return 'Check input<br />Length must be the only value or it must be 0/empty.';
+        return 'Check input<br />Length must be the only value or it must be 0/empty.<br />';
     } else {
         return NULL;
     }
 }
 
-//calc posts and railings function to call the results of which go onto the screen
-//function calcPostsAndRailings($posts, $railings, $length) {
-//    if (checkInput($posts, $railings, $length)) {
-//        echo checkInput($posts, $railings, $length);
-//        return;
-//    }
-//
-//    if (whatToCalculate($posts, $railings, $length) === 'lengthOnly') {
-//        $result =  postRailingsCalculator($length, POSTLENGTH, RAILINGLENGTH);
-//    } else {
-//        $result = lengthCalculator(whatToCalculate($posts, $railings, $length), $posts, $railings, POSTLENGTH, RAILINGLENGTH);
-//    }
-//
-//    return $result;
-//}
-
 /**
  * workout what calculation performing
- * @param int $posts - number of posts
- * @param int $railings - number of railings
- * @param int $length - length
+ * @param $posts - number of posts
+ * @param $railings - number of railings
+ * @param $length - length
  * @return string to represent the type of calculation to perform
  */
-function whatToCalculate($posts, $railings, $length): string {
+function whatToCalculate($posts,  $railings, $length): string {
     if ($posts > 0 && $railings > 0 && $length === 0) {
         return 'postsRailings'; //length from posts and railings
     } elseif ($posts === 0 && $railings > 0 && $length === 0) {
@@ -54,13 +38,21 @@ function whatToCalculate($posts, $railings, $length): string {
     }  elseif ($posts === 0 && $railings === 0 && $length > 0) {
         return 'lengthOnly'; //posts and railings from lengths
     } else {
-        echo 'oops this shouldn\'t have happened: function whatToCalculate';
+        return 'oops this shouldn\'t have happened: function whatToCalculate';
     }
 }
 
 
-//function to calculate length (and posts or railings as necessary)
-function lengthCalculator ($type, $posts, $railings, $postLength, $railingLength) {
+/**
+ * function to calculate length of fence based on input of posts and/or railings
+ * @param string $type - the type of calculation required
+ * @param int $posts - the number of posts
+ * @param int $railings - the number of railings
+ * @param float $postLength - constant for the length of the posts
+ * @param float $railingLength - constant for the length of the railings
+ * @return string - the calculation and relevant information about the input from which the calculation was made
+ */
+function lengthCalculator (string $type, int $posts, int $railings, float $postLength, float $railingLength): string {
     $returnString = '';
     if ($type === 'postsRailings') {
         if ($railings === $posts) {
@@ -81,8 +73,14 @@ function lengthCalculator ($type, $posts, $railings, $postLength, $railingLength
     }
 }
 
-//function to calculate post and railings from length
-function postRailingsCalculator ($length, $postLength, $railingLength) {
+/**
+ * function to calculate posts and railings from an inputted length
+ * @param float $length - the length input
+ * @param float $postLength - constant for length of posts
+ * @param float $railingLength - constant for length of railings
+ * @return string - the calculation and relevant information about the input from which the calculation was made
+ */
+function postRailingsCalculator (float $length, float $postLength, float $railingLength): string {
     $buildLength = $postLength;
     $noOfPosts = 1;
     $noOfRailings = 0;
@@ -97,7 +95,7 @@ function postRailingsCalculator ($length, $postLength, $railingLength) {
         $toReturn = 'Length inputted: ' . $length . 'm<br />';
         $toReturn .= 'Posts: ' . $noOfPosts . '<br />' . 'Railings: ' . $noOfRailings . '<br />';
         $toReturn .= 'Total Length of resulting fence: '  . $buildLength . 'm<br />';
-        $lengthDiff = $buildLength - $length;
+        //$lengthDiff = $buildLength - $length;
         //echo gettype($buildLength);
         //echo gettype($length);
         //$toReturn .= 'Difference from input length: ' . $lengthDiff;
@@ -105,7 +103,9 @@ function postRailingsCalculator ($length, $postLength, $railingLength) {
     }
 }
 
-//function to clear post
+/**
+ * function to unset POST data
+ */
 function clearUp()
 {
     unset($_POST);
