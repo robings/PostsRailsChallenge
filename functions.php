@@ -23,20 +23,20 @@ function checkInput($posts, $railings, $length) {
 }
 
 //calc posts and railings function to call the results of which go onto the screen
-function calcPostsAndRailings($posts, $railings, $length) {
-    if (checkInput($posts, $railings, $length)) {
-        echo checkInput($posts, $railings, $length);
-        return;
-    }
-
-    if (whatToCalculate($posts, $railings, $length) === 'lengthOnly') {
-        $result =  postRailingsCalculator($length, POSTLENGTH, RAILINGLENGTH);
-    } else {
-        $result = lengthCalculator(whatToCalculate($posts, $railings, $length), $posts, $railings, POSTLENGTH, RAILINGLENGTH);
-    }
-
-    return $result;
-}
+//function calcPostsAndRailings($posts, $railings, $length) {
+//    if (checkInput($posts, $railings, $length)) {
+//        echo checkInput($posts, $railings, $length);
+//        return;
+//    }
+//
+//    if (whatToCalculate($posts, $railings, $length) === 'lengthOnly') {
+//        $result =  postRailingsCalculator($length, POSTLENGTH, RAILINGLENGTH);
+//    } else {
+//        $result = lengthCalculator(whatToCalculate($posts, $railings, $length), $posts, $railings, POSTLENGTH, RAILINGLENGTH);
+//    }
+//
+//    return $result;
+//}
 
 /**
  * workout what calculation performing

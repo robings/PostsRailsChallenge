@@ -1,6 +1,7 @@
 <?php
 
 require_once ('functions.php');
+$result='';
 
 //is there user input?
 if (isset($_POST['posts'])) {
@@ -26,10 +27,17 @@ if (isset($_POST['posts'])) {
     define('POSTLENGTH', 0.1);
     define('RAILINGLENGTH', 1.5);
 
-
 //run main function
     //echo $posts;
-   $result = calcPostsAndRailings($posts, $railings, $length);
+    if (checkInput($posts, $railings, $length)) {
+        echo checkInput($posts, $railings, $length);
+    } elseif (whatToCalculate($posts, $railings, $length) === 'lengthOnly') {
+        $result =  postRailingsCalculator($length, POSTLENGTH, RAILINGLENGTH);
+    } else {
+        $result = lengthCalculator(whatToCalculate($posts, $railings, $length), $posts, $railings, POSTLENGTH, RAILINGLENGTH);
+    }
+
+    //$result = calcPostsAndRailings($posts, $railings, $length);
 
 } else {
     //echo 'There is no get';
