@@ -22,13 +22,14 @@ if (isset($_POST['posts'])) {
         $length = 0;
     }
 
-
 //constants for post and railing lengths
     define('POSTLENGTH', 0.1);
     define('RAILINGLENGTH', 1.5);
 
-//run main function
-    //echo $posts;
+    $posts = trim($posts);
+    $railings = trim($railings);
+    $length = trim($length);
+
     if (checkInput($posts, $railings, $length)) {
         $result = 'Check input:<br />All values cannot be 0 or empty; no value can be a minus number.<br />You cannot enter an array';
         $result .= '<br />You cannot input values for posts, railings and length all at the same time.';
@@ -39,15 +40,9 @@ if (isset($_POST['posts'])) {
         $result = lengthCalculator(whatToCalculate($posts, $railings, $length), $posts, $railings, POSTLENGTH, RAILINGLENGTH);
     }
 
-    //$result = calcPostsAndRailings($posts, $railings, $length);
-
-} else {
-    //echo 'There is no get';
 }
 
-// clear up
 clearUp();
-
 
 ?>
 
@@ -59,9 +54,7 @@ clearUp();
     <label>Length: </label><input type='text' name='length' /><br /><br />
     <input type='submit' />
 </form>
-<?php
- echo $result;
-?>
+<?php echo $result; ?>
 
 <a href='index.php'>Reset it</a>
 </html>
