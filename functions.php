@@ -9,19 +9,21 @@
  *
  * @param $length - value from length input from form
  *
- * @return string|null - a string with an error message, or a NULL
+ * @return bool - true or false returned if there is a problem
  */
-function checkInput($posts, $railings, $length) {
-    if ($posts == 0 && $railings == 0 && $length == 0) {
-        return 'Check input<br />All values cannot be 0 or empty.<br />';
+function checkInput($posts, $railings, $length): bool {
+    if (($posts <= 0 && $railings <= 0 && $length <= 0) || ($posts <0 || $railings <0 || $length <0)) {
+        return true;
     } elseif ($posts == 1) {
-        return 'There must be at least 2 posts for a fence.<br />';
-    } elseif ($posts > 0 && $railings > 0 && $length > 0) {
-        return 'Check input<br />You cannot input values for posts, railings and length all at the same time.br />';
+        return true;
+    } elseif (is_array($posts) || is_array($railings) || is_array($railings)) {
+        return true;
+    }  elseif ($posts > 0 && $railings > 0 && $length > 0) {
+        return true;
     } elseif (($length > 0 && $posts > 0 && $railings == 0) || ($length > 0 && $posts == 0 && $railings > 0)) {
-        return 'Check input<br />Length must be the only value or it must be 0/empty.<br />';
+        return true;
     } else {
-        return NULL;
+        return false;
     }
 }
 

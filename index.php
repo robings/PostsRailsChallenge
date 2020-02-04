@@ -30,7 +30,9 @@ if (isset($_POST['posts'])) {
 //run main function
     //echo $posts;
     if (checkInput($posts, $railings, $length)) {
-        $result = checkInput($posts, $railings, $length);
+        $result = 'Check input:<br />All values cannot be 0 or empty; no value can be a minus number.<br />You cannot enter an array';
+        $result .= '<br />You cannot input values for posts, railings and length all at the same time.';
+        $result .= '<br />Length must be the only value or it must be 0/empty.<br />You cannot have only one post.<br />';
     } elseif (whatToCalculate($posts, $railings, $length) === 'lengthOnly') {
         $result =  postRailingsCalculator($length, POSTLENGTH, RAILINGLENGTH);
     } else {
