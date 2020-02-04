@@ -2,9 +2,13 @@
 
 /**
  * checks input for problems
+ *
  * @param $posts - value from posts input on form
+ *
  * @param $railings - value from railings input from form
+ *
  * @param $length - value from length input from form
+ *
  * @return string|null - a string with an error message, or a NULL
  */
 function checkInput($posts, $railings, $length) {
@@ -23,9 +27,13 @@ function checkInput($posts, $railings, $length) {
 
 /**
  * workout what calculation performing
+ *
  * @param $posts - number of posts
+ *
  * @param $railings - number of railings
+ *
  * @param $length - length
+ *
  * @return string to represent the type of calculation to perform
  */
 function whatToCalculate($posts,  $railings, $length): string {
@@ -45,11 +53,17 @@ function whatToCalculate($posts,  $railings, $length): string {
 
 /**
  * function to calculate length of fence based on input of posts and/or railings
+ *
  * @param string $type - the type of calculation required
+ *
  * @param int $posts - the number of posts
+ *
  * @param int $railings - the number of railings
+ *
  * @param float $postLength - constant for the length of the posts
+ *
  * @param float $railingLength - constant for the length of the railings
+ *
  * @return string - the calculation and relevant information about the input from which the calculation was made
  */
 function lengthCalculator (string $type, int $posts, int $railings, float $postLength, float $railingLength): string {
@@ -75,9 +89,13 @@ function lengthCalculator (string $type, int $posts, int $railings, float $postL
 
 /**
  * function to calculate posts and railings from an inputted length
+ *
  * @param float $length - the length input
+ *
  * @param float $postLength - constant for length of posts
+ *
  * @param float $railingLength - constant for length of railings
+ *
  * @return string - the calculation and relevant information about the input from which the calculation was made
  */
 function postRailingsCalculator (float $length, float $postLength, float $railingLength): string {
