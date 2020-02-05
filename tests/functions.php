@@ -163,7 +163,7 @@ class FunctionTests extends TestCase
         $case = postRailingsCalculator($input1, $input2, $input3);
         $this->assertEquals($expected, $case);
     }
-    public function testPostsRailingsCalculatorMalformed() {
+    public function testPostRailingsCalculatorMalformed() {
         $this->expectException(TypeError::class);
         $input1 = [];
         $input2 = 0.1;
