@@ -79,7 +79,7 @@ function lengthCalculator (string $type, int $posts, int $railings, float $postL
         $returnString .= 'Length: ' . (($railings * $railingLength) + ($posts * $postLength))  . 'm<br />';
         return $returnString;
     } elseif ($type === 'railingsOnly') {
-        $returnString = 'No of railngs inputted: ' . $railings . '<br />Posts: ' . ($railings + 1) . '<br />';
+        $returnString = 'No of railings inputted: ' . $railings . '<br />Posts: ' . ($railings + 1) . '<br />';
         $returnString .= 'Length: ' . (($railings * $railingLength) + (($railings + 1) * $postLength))  . 'm<br />';
         return $returnString;
     } elseif ($type === 'postsOnly') {
