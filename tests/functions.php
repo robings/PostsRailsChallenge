@@ -88,5 +88,60 @@ class FunctionTests extends TestCase
         $this->assertEquals($expected, $case);
     }
 
+    //whatToCalculate tests
+    public function testWhatToCalculateSuccessPR() {
+        $expected='postsRailings';
+        $input1 = 2;
+        $input2 = 1;
+        $input3 = 0;
+
+        $case = whatToCalculate($input1, $input2, $input3);
+        $this->assertEquals($expected, $case);
+    }
+    public function testWhatToCalculateSuccessROnly() {
+        $expected='railingsOnly';
+        $input1 = 0;
+        $input2 = 2;
+        $input3 = 0;
+
+        $case = whatToCalculate($input1, $input2, $input3);
+        $this->assertEquals($expected, $case);
+    }
+    public function testWhatToCalculateSuccessPOnly() {
+        $expected='postsOnly';
+        $input1 = 2;
+        $input2 = 0;
+        $input3 = 0;
+
+        $case = whatToCalculate($input1, $input2, $input3);
+        $this->assertEquals($expected, $case);
+    }
+    public function testWhatToCalculateSuccessLOnly() {
+        $expected='lengthOnly';
+        $input1 = 0;
+        $input2 = 0;
+        $input3 = 3;
+
+        $case = whatToCalculate($input1, $input2, $input3);
+        $this->assertEquals($expected, $case);
+    }
+    public function testWhatToCalculateFailure() {
+        $expected='oops this shouldn\'t have happened: function whatToCalculate';
+        $input1 = 0;
+        $input2 = 0;
+        $input3 = 0;
+
+        $case = whatToCalculate($input1, $input2, $input3);
+        $this->assertEquals($expected, $case);
+    }
+    public function testWhatToCalculateMalformed() {
+        $expected='oops this shouldn\'t have happened: function whatToCalculate';
+        $input1 = [ 0, 3];
+        $input2 = 0;
+        $input3 = -3;
+
+        $case = whatToCalculate($input1, $input2, $input3);
+        $this->assertEquals($expected, $case);
+    }
 
 }
