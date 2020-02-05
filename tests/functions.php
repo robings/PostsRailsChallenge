@@ -144,4 +144,15 @@ class FunctionTests extends TestCase
         $this->assertEquals($expected, $case);
     }
 
+    //postRailingsCalculator tests
+    public function testPostRailingsCalculatorSuccess() {
+        $expected = 'Length inputted: 1.7m<br />Posts: 2<br />Railings: 1<br />Total Length of resulting fence: 1.7m<br />';
+        $input1 = 1.7;
+        $input2 = 0.1;
+        $input3 = 1.5;
+
+        $case = postRailingsCalculator($input1, $input2, $input3);
+        $this->assertEquals($expected, $case);
+    }
+
 }
